@@ -63,8 +63,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scenes\sprite\Manager\ManagerVars.cs" />
-    <Compile Include="Assets\Scenes\sprite\NormalAttackMissile.cs" />
+    <Compile Include="Assets\Resources\ManagerVars.cs" />
+    <Compile Include="Assets\Scenes\scripts\BattleControler.cs" />
+    <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\CeobeShelling.cs" />
+    <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\LongWalkAlone.cs" />
+    <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\VeryCoolAxe.cs" />
+    <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\VeryHeavySpear.cs" />
+    <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\VeryHotKnife.cs" />
+    <Compile Include="Assets\Scenes\scripts\System\ButtenMoveSystem.cs" />
+    <Compile Include="Assets\Scenes\scripts\System\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scenes\scripts\System\NormalAttackMissile.cs" />
+    <Compile Include="Assets\Scenes\scripts\UI\WorldControler.cs" />
     <Reference Include="Unity.DocZh.Editor">
       <HintPath>C:/Users/63569/Desktop/Yumis/Game/Library/ScriptAssemblies/Unity.DocZh.Editor.dll</HintPath>
     </Reference>

@@ -1,0 +1,194 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
+
+public class NormalAttackMissile : MonoBehaviour
+{
+    /// <summary>
+    /// 攻击间隔
+    /// </summary>
+    public float AttackInterval;
+    /// <summary>
+    /// 攻击速度
+    /// </summary>
+    public float AttackSpeed;
+    /// <summary>
+    /// 最大生命值 
+    /// </summary>
+    public float MaxHp;
+    /// <summary>
+    /// 现在生命值
+    /// </summary>
+    public float NowHp;
+    /// <summary>
+    /// 最大技力
+    /// </summary>
+    public float MaxMp;
+    /// <summary>
+    /// 现在技力
+    /// </summary>
+    public float NowMp;
+    /// <summary>
+    /// 物理防御力
+    /// </summary>
+    public float PhyDef;
+    /// <summary>
+    /// 魔法防御力
+    /// </summary>
+    public float MagDef;
+    /// <summary>
+    /// 面板攻击力
+    /// </summary>
+    public float Attack;
+    /// <summary>
+    /// 攻击范围s
+    /// </summary>
+    public int[] AttackRange = new int[10];
+
+    /// <summary>
+    /// 一技能是否使用
+    /// </summary>
+    public bool WantToUseSkill1;
+    /// <summary>
+    /// 二技能是否使用
+    /// </summary>
+    public bool WantToUseSkill2;
+    /// <summary>
+    /// 三技能是否使用
+    /// </summary>
+    public bool WantToUseSkill3;
+    /// <summary>
+    /// 拥有的技能数量
+    /// </summary>
+    public int SkillNum;
+    /// <summary>
+    /// 攻击类型 LongRange,ShortRange,Heal
+    /// </summary>
+    public string AttackType;
+
+    /// <summary>
+    /// 投掷物
+    /// </summary>
+    public GameObject Missile;
+
+    /// <summary>
+    /// 所在X轴
+    /// </summary>
+    public int x;
+    /// <summary>
+    /// 所在Y轴
+    /// </summary>
+    public int y;
+    /// <summary>
+    /// 时间计算(不可修改)
+    /// </summary>
+    private float time;
+    /// <summary>
+    /// 获取动画组件（不可修改）
+    /// </summary>
+    private Animator anim;
+    /// <summary>
+    /// 获取Vars组件
+    /// </summary>
+    private ManagerVars vars;
+    void Start()
+    {
+        vars = ManagerVars.GetManager();
+        time = AttackInterval;
+        anim = GetComponent<Animator>();
+        transform.position = GetPlace();
+
+
+        anim.SetInteger("Skill2", 1);
+        WantToUseSkill2 = true;
+        AttackInterval = 160f * 0.33f;
+    }
+    public Vector2 GetPlace()
+    {
+        Vector2 vt2;
+        vt2.x = x * 1.93f -9.72f;
+        vt2.y = y * 2.15f -3.36f;
+        return vt2;
+    }
+
+    public Vector2 GetBlockPlace(int x,int y)
+    {
+        Vector2 vt2;
+        vt2.x = -8.88f + (x - 1) * 1.92f;
+        vt2.y = -2.67f + (y - 1) * 2.17f;
+        return vt2;
+    }
+    public void UnderAttack(float damage,string type)
+    {
+        if (type == "Phy")
+        {
+            float f = damage - PhyDef;
+            float g = damage * 0.05f;
+            damage = ((f) > (g) ? (f) : (g));
+        }
+        if (type == "Mag")
+        {
+            damage *= (1.0f - 0.01f * MagDef);
+        }
+
+
+        NowHp -= damage;
+    }
+    public GameObject FindEnemy(string type)
+    {
+
+
+//       Physics2D.OverlapAreaAll();
+        return null;
+    }
+    public void ThroBullet(GameObject Bullet,GameObject Enemy,float Damage,float Wait)
+    {
+        NormalAttackMissile EnemyNumerical = Enemy.GetComponent<NormalAttackMissile>();
+        Vector2 vt2 = GetPlace();
+        Vector2 ed2 = EnemyNumerical.GetPlace();
+        GameObject go = Instantiate(Bullet);
+
+        var pos = go.transform.position;
+        pos.x = vt2.x + 0.5f;
+        pos.y = vt2.y;
+        go.transform.position = pos;
+
+        ButtenMoveSystem goMove = go.GetComponent<ButtenMoveSystem>();
+        goMove.tim = 1.0f;
+        goMove.move_x = ed2.x - pos.x;
+        goMove.move_y = ed2.y - pos.y;
+        goMove.enemy = Enemy;
+        goMove.damage = Damage;
+        goMove.count = -1 * Wait;
+
+
+        var k = goMove.transform.localScale;
+        goMove.transform.localScale = k;
+
+    }
+    private void Update()
+    {
+        anim.SetInteger("Attack", 0);
+        anim.SetInteger("Skill1", 0);
+        time += Time.deltaTime * 100;
+        GameObject kil = FindEnemy(AttackType);
+        if (time > (AttackInterval)/((AttackSpeed * 0.01)/(1+ AttackSpeed * 0.01)) && kil != null)
+        {
+            time = 0;
+            if (NowMp >= 3 && !WantToUseSkill2)
+            {
+                NowMp -= 3;
+                WantToUseSkill1 = true;
+                anim.SetInteger("Skill1", 1);
+            }
+            else
+            {
+                ThroBullet(Missile,kil,Attack,0.15f);
+                NowMp++;
+                anim.SetInteger("Attack", 1);
+            }
+            time = 0;
+        }
+    }
+}
