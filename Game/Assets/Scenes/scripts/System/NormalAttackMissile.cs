@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal.VR;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
+using UnityEngine.SocialPlatforms;
 
 public class NormalAttackMissile : MonoBehaviour
 {
@@ -45,6 +47,7 @@ public class NormalAttackMissile : MonoBehaviour
     /// 攻击范围s
     /// </summary>
     public int[] AttackRange = new int[10];
+    public bool IsEnemy;
 
     /// <summary>
     /// 一技能是否使用
@@ -135,15 +138,53 @@ public class NormalAttackMissile : MonoBehaviour
 
         NowHp -= damage;
     }
-    public GameObject FindEnemy(string type)
+    public Collider2D FindEnemy(string type,int[] Range)
     {
+        Collider2D[] AllCollider = new Collider2D[20];
+        int head = 0;
+        for (int i = 0; i < Range.Length; i ++)
+        {
+            int _x, _y;
+            Vector2 vtl, vtr;
+            _x = x + (Range[i] / 100 % 10) * ((Range[i] / 1000 == 1) ? -1 : 1);
+            _y = y + (Range[i] % 10) * ((Range[i] % 100 / 10 == 1) ? -1 : 1);
+            Vector2 kk = GetBlockPlace(_x, _y);
+            vtl.x = kk.x;
+            vtl.y = kk.y;
+            vtr.x = kk.x + 1.92f;
+            vtr.y = kk.y + 2.17f;
+            Collider2D[] a = Physics2D.OverlapAreaAll(vtr, vtl);
+            if (i== 4 || i == 1)
+            {
+                //Debug.Log(a[0]);
+            }
+            for (int j = 0; j < a.Length; j ++)
+            {
+                AllCollider[head] = a[j];
+                //Debug.Log(AllCollider[head]);
+                head++;
+            }
+        }
+        if (type == "AttackFar")
+        {
+            for (int i = 0; i < AllCollider.Length; i ++)
+            {
+                NormalAttackMissile n = AllCollider[i].GetComponent<NormalAttackMissile>();
+                if (n.IsEnemy == true)
+                {
+                   // Debug.Log(AllCollider[i]);
+                    return AllCollider[i];
+                }
+            }
+        }
 
 
-//       Physics2D.OverlapAreaAll();
+        //       Physics2D.OverlapAreaAll();
         return null;
     }
-    public void ThroBullet(GameObject Bullet,GameObject Enemy,float Damage,float Wait)
+    public void ThroBullet(GameObject Bullet,Collider2D Enemy,float Damage,float Wait)
     {
+        Debug.Log("?");
         NormalAttackMissile EnemyNumerical = Enemy.GetComponent<NormalAttackMissile>();
         Vector2 vt2 = GetPlace();
         Vector2 ed2 = EnemyNumerical.GetPlace();
@@ -172,8 +213,9 @@ public class NormalAttackMissile : MonoBehaviour
         anim.SetInteger("Attack", 0);
         anim.SetInteger("Skill1", 0);
         time += Time.deltaTime * 100;
-        GameObject kil = FindEnemy(AttackType);
-        if (time > (AttackInterval)/((AttackSpeed * 0.01)/(1+ AttackSpeed * 0.01)) && kil != null)
+        Collider2D kil = FindEnemy(AttackType,AttackRange);
+        //Debug.Log(kil);
+        if (time > (AttackInterval)*(1-(AttackSpeed * 0.01)/(1+ AttackSpeed * 0.01)) && kil != null)
         {
             time = 0;
             if (NowMp >= 3 && !WantToUseSkill2)

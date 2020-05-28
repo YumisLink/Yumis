@@ -132,7 +132,7 @@ MonoBehaviour:
   WantToUseSkill2: 1
   WantToUseSkill3: 0
   SkillNum: 0
-  AttackType: LongRange
+  AttackType: AttackFar
   Missile: {fileID: 5029586874990441670, guid: edb902485623de94098f1f6c7343aee7, type: 3}
   x: 0
   y: 0

@@ -29,7 +29,7 @@ public class VeryCoolAxe : MonoBehaviour
         if (main.WantToUseSkill1)
         {
             main.WantToUseSkill1 = false;
-            main.ThroBullet(Misslie, main.FindEnemy(main.AttackType),main.Attack*2.1f,0.6f);
+            main.ThroBullet(Misslie, main.FindEnemy(main.AttackType,main.AttackRange),main.Attack*2.1f,0.6f);
         }
     }
 }

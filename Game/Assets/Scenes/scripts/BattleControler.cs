@@ -14,7 +14,7 @@ public class BattleControler : MonoBehaviour
     {
         vars = ManagerVars.GetManager();
         
-        vars.PlaceId[1, 1] = 1;
+        vars.PlaceId[4, 1] = 1;
         /*
         vars.PlaceId[2, 2] = 1;
         vars.PlaceId[3, 3] = 1;
@@ -24,7 +24,7 @@ public class BattleControler : MonoBehaviour
         vars.PlaceId[7, 1] = 1;
         vars.PlaceId[8, 2] = 1;
         */
-        vars.PlaceId[9, 1] = 2;
+        vars.PlaceId[5, 1] = 2;
         vars.k = 100;
 
 

@@ -11,7 +11,7 @@ public class ButtenMoveSystem : MonoBehaviour
     /// </summary>
     public float tim;
     public float count;
-    public GameObject enemy;
+    public Collider2D enemy;
     public float damage ;
     private void Start()
     {
