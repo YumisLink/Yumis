@@ -1,0 +1,28 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": false,
+    "files.associations": {
+        "cmath": "cpp",
+        "stdio.h": "c",
+        "cstdio": "cpp",
+        "queue": "cpp",
+        "random": "cpp",
+        "ratio": "cpp",
+        "type_traits": "cpp",
+        "iostream": "cpp",
+        "complex": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "unordered_map": "cpp",
+        "stack": "cpp",
+        "algorithm": "cpp",
+        "cstring": "cpp",
+        "string_view": "cpp",
+        "regex": "cpp"
+    },
+    "python.pythonPath": "C:\\Users\\86189\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe"
+
+}
