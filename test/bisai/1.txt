@@ -329,8 +329,6 @@ void RegisterSystem()
 	AccountsMuch ++;
 	strcpy(Information[AccountsMuch].AccountNumber,_accountNumber);
 	strcpy(Information[AccountsMuch].Password,_password);
-	strcpy(Information[AccountsMuch].Id,"GAME");
-	strcpy(Information[AccountsMuch].Name,"GAME");
 	Information[AccountsMuch].UserPower = 1;
 	return ;
 }
@@ -409,6 +407,6 @@ int main ()
 		fprintf(dt,"%s %s %d\n",SInfomation[k].Name,SInfomation[k].Id,SInfomation[k].Wages);
 	}
 	fclose(dt);
-
+	
 	return 0;
 }
