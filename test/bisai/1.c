@@ -3,8 +3,7 @@
 #include<string.h>
 #define MAXN 10000
 #define PutStar() puts("****************************************")
-#define upl(a,b) for(int a = 1; a <= b; a ++)
-#define dwl(a,b) for(int a = b; a >= 1; a --)
+
 struct UserInformation
 {
 	char AccountNumber[100];

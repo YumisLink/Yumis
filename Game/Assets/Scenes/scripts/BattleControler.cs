@@ -24,7 +24,6 @@ public class BattleControler : MonoBehaviour
         vars.PlaceId[7, 1] = 1;
         vars.PlaceId[8, 2] = 1;
         */
-        vars.PlaceId[5, 1] = 2;
         vars.k = 100;
 
 

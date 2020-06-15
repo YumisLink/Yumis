@@ -100,7 +100,10 @@ public class NormalAttackMissile : MonoBehaviour
         vars = ManagerVars.GetManager();
         time = AttackInterval;
         anim = GetComponent<Animator>();
-        transform.position = GetPlace();
+        if (x != 0 && y != 0)
+        {
+            transform.position = GetPlace();
+        }
 
 
         anim.SetInteger("Skill2", 1);
@@ -165,6 +168,7 @@ public class NormalAttackMissile : MonoBehaviour
                 head++;
             }
         }
+
         if (type == "AttackFar")
         {
             for (int i = 0; i < AllCollider.Length; i ++)
@@ -186,8 +190,8 @@ public class NormalAttackMissile : MonoBehaviour
     {
         Debug.Log("?");
         NormalAttackMissile EnemyNumerical = Enemy.GetComponent<NormalAttackMissile>();
+        var ed2 = Enemy.transform.position;
         Vector2 vt2 = GetPlace();
-        Vector2 ed2 = EnemyNumerical.GetPlace();
         GameObject go = Instantiate(Bullet);
 
         var pos = go.transform.position;
@@ -195,10 +199,11 @@ public class NormalAttackMissile : MonoBehaviour
         pos.y = vt2.y;
         go.transform.position = pos;
 
+        //go.transform.rotation = angle; 
+
         ButtenMoveSystem goMove = go.GetComponent<ButtenMoveSystem>();
         goMove.tim = 1.0f;
-        goMove.move_x = ed2.x - pos.x;
-        goMove.move_y = ed2.y - pos.y;
+        goMove.speed = 6;
         goMove.enemy = Enemy;
         goMove.damage = Damage;
         goMove.count = -1 * Wait;
@@ -212,8 +217,12 @@ public class NormalAttackMissile : MonoBehaviour
     {
         anim.SetInteger("Attack", 0);
         anim.SetInteger("Skill1", 0);
+
         time += Time.deltaTime * 100;
-        Collider2D kil = FindEnemy(AttackType,AttackRange);
+
+        
+        Collider2D kil  = FindEnemy(AttackType,AttackRange);
+
         //Debug.Log(kil);
         if (time > (AttackInterval)*(1-(AttackSpeed * 0.01)/(1+ AttackSpeed * 0.01)) && kil != null)
         {
