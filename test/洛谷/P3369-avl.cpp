@@ -17,7 +17,6 @@ void updata(int root)//更新节点信息
     if (n[root].num == 0) return ;
     n[root].depth = max(n[n[root].plea[0]].depth,n[n[root].plea[1]].depth) + 1;
     n[root].cnt = n[n[root].plea[0]].cnt + n[n[root].plea[1]].cnt + n[root].recy;
-
 }
 
 int idt(int x){return n[n[x].fath].plea[0] == x?0:1;}//判断是否为左节点，是则返回0，否则返回1。 
@@ -37,7 +36,9 @@ void rotate(int root)
 	updata(up);
     updata(root); // 更新数据 
 }
+
 int putbf(int root)  {return n[n[root].plea[0]].depth - n[n[root].plea[1]].depth;}
+
 void ifbf(int root)//获取自身与父亲的关系
 {
     updata(root);
