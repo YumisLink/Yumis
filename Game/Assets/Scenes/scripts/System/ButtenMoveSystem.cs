@@ -57,7 +57,7 @@ public class ButtenMoveSystem : MonoBehaviour
             transform.position = k;
             if (a[0] == enemy)
             {
-                NormalAttackMissile en = enemy.GetComponent<NormalAttackMissile>();
+                RoleBaseAttribute en = enemy.GetComponent<RoleBaseAttribute>();
                 en.UnderAttack(damage,"Mag");
                 Object.Destroy(gameObject);
             }

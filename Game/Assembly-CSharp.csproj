@@ -70,8 +70,9 @@
     <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\VeryCoolAxe.cs" />
     <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\VeryHeavySpear.cs" />
     <Compile Include="Assets\Scenes\scripts\Skill\Ceobe\VeryHotKnife.cs" />
+    <Compile Include="Assets\Scenes\scripts\Skill\GenShoKo\MagicBook.cs" />
     <Compile Include="Assets\Scenes\scripts\System\ButtenMoveSystem.cs" />
-    <Compile Include="Assets\Scenes\scripts\System\NormalAttackMissile.cs" />
+    <Compile Include="Assets\Scenes\scripts\System\RoleBaseAttribute.cs" />
     <Compile Include="Assets\Scenes\scripts\UI\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scenes\scripts\UI\WorldControler.cs" />
     <Reference Include="Unity.DocZh.Editor">

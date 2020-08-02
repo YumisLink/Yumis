@@ -7,7 +7,7 @@ public class LongWalkAlone : MonoBehaviour
 {
     public float[] Range = new float[4];
     private bool LongWalkAloneOn;
-    NormalAttackMissile main;
+    RoleBaseAttribute main;
     /// <summary>
     /// 攻击力提升量
     /// </summary>
@@ -19,7 +19,7 @@ public class LongWalkAlone : MonoBehaviour
     void Start()
     {
         LongWalkAloneOn = true;
-        main = GetComponent<NormalAttackMissile>();
+        main = GetComponent<RoleBaseAttribute>();
         AddAtt = main.Attack * 0.08f;
         AddSpeed = 8;
     }

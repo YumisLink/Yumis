@@ -16,12 +16,12 @@ public class VeryCoolAxe : MonoBehaviour
     /// <summary>
     /// 获取主角的属性值
     /// </summary>
-    private NormalAttackMissile main;
+    private RoleBaseAttribute main;
 
     
     void Start()
     {
-        main = GetComponent<NormalAttackMissile>();
+        main = GetComponent<RoleBaseAttribute>();
     }
 
     void Update()

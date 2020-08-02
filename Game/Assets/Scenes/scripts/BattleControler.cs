@@ -14,7 +14,7 @@ public class BattleControler : MonoBehaviour
     {
         vars = ManagerVars.GetManager();
         
-        vars.PlaceId[4, 1] = 1;
+        //vars.PlaceId[4, 1] = 1;
         /*
         vars.PlaceId[2, 2] = 1;
         vars.PlaceId[3, 3] = 1;
@@ -41,7 +41,7 @@ public class BattleControler : MonoBehaviour
                     if (vars.PlaceId[i, j] != 0)
                     {
                         vars.PlaceRole[i,j] = Object.Instantiate(vars.AllPreform[vars.PlaceId[i, j]]);
-                        NormalAttackMissile a = vars.PlaceRole[i, j].GetComponent<NormalAttackMissile>();
+                        RoleBaseAttribute a = vars.PlaceRole[i, j].GetComponent<RoleBaseAttribute>();
                         var scale = vars.PlaceRole[i, j].transform.localScale;
                             scale.x *= -1;
                         if (i > 4)
