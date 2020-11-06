@@ -5,15 +5,40 @@
         "type": "shell",
         "label": "g++.exe build active file",
         "command": "D:\\MinGW\\bin\\g++.exe",
-        "args": ["-g", "${file}", "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe"],
+        "args": [
+          "-g",
+          "${file}",
+          "-o",
+          "${fileDirname}\\${fileBasenameNoExtension}.exe"
+        ],
         "options": {
           "cwd": "D:\\MinGW\\bin"
         },
-        "problemMatcher": ["$gcc"],
+        "problemMatcher": [
+          "$gcc"
+        ],
         "group": {
           "kind": "build",
           "isDefault": true
         }
+      },
+      {
+        "type": "shell",
+        "label": "C/C++: g++.exe build active file",
+        "command": "D:\\MinGW\\bin\\g++.exe",
+        "args": [
+          "-g",
+          "${file}",
+          "-o",
+          "${fileDirname}\\${fileBasenameNoExtension}.exe"
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": "build"
       }
     ]
   }

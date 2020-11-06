@@ -1,0 +1,12 @@
+var a = argument0;
+if a == 13 return spr_13;
+if a == 12 return spr_12;
+if a == 11 return spr_11;
+if a == 10 return spr_10;
+if a == 9 return spr_9;
+if a == 8 return spr_8;
+if a == 7 return spr_7;
+if a == 6 return spr_6;
+if a == 5 return spr_5;
+if a == 4 return spr_4;
+if a == 3 return spr_3;

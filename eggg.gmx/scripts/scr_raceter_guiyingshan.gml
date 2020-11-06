@@ -1,0 +1,1 @@
+if (gys_cd > 0) gys_cd --;

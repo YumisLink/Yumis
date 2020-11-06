@@ -11,7 +11,7 @@ void pulldown(int root)
     int k = lazy[root]%2==0?0:1;
     lazy[root] = 0;
     lazy[ch[root][0]] += k;
-    lazy[ch[root][1]] += k;y
+    lazy[ch[root][1]] += k;
 }
 int create(int l,int r,int fa)
 {
@@ -51,43 +51,66 @@ int find(int k)
 void connect(int son,int fa,int ple){fat[son] = fa;ch[fa][ple] = son;}
 void rotate(int root)
 {
+    // printf("up %d to %d   g = %d\n",root,fat[root],fat[fat[root]]);
     int fa = fat[root];
     int gfa = fat[fa];
+	pulldown(root),pulldown(fa);
     int rfa = idt(root);
     int sonr = rfa^1;
     int son = ch[root][sonr];
     int fagfa = idt(fa);
-    connect(son,fa,sonr^1);
+    if (son != 0) connect(son,fa,sonr^1);
+    else ch[fa][sonr^1] = 0;
     connect(fa,root,sonr);
     connect(root,gfa,fagfa);
     update(fa);update(root);
 }
-void splay(int argument0)
+void splay(int root,int to)
 {
-    int root = argument0;
-    while(fat[root] != 0)
-        rotate(root);
+    for (;fat[root] != to;)
+    {
+        if (fat[fat[root]] != to)
+            rotate(idt(fat[root]) == idt(root) ? fat[root] : root);
+        rotate(root); 
+    }
 }
 void midfind(int root)
 {
     if (root == 0 ) return;
+    if (root == 1) {};
+    
     if (lazy[root]%2 != 0){pulldown(root);swap(root);}
     midfind(ch[root][0]);
     if (root != n+1 && root != n+2) printf("%d ",sum[root]);
     midfind(ch[root][1]);
 }
+void pus()
+{
+    printf("start at %d\n",ch[0][0]);
+    for (int i = 1; i <= n+2; i ++)
+    {
+        printf("i = %d    left = %d  right = %d  fat = %d  lazy = %d\n",i,ch[i][0],ch[i][1],fat[i],lazy[i]);
+    }
+}
 int main ()
 {
     scanf("%d%d",&n,&m);
     ch[0][0] = create(1,n,0);
+    
+        // pus();
     for(int i = 1; i <= m; i ++)
     {
         int x,y;
         scanf("%d%d",&x,&y);y+=2;
         int x1 = find(x),y1=find(y);
-        splay(y1);
-        splay(x1);
+        splay(x1,0);
+        // pus();
+        splay(y1,x1);
         lazy[ch[y1][0]] ++;
+    // puts("");
+        // pus();
+        // midfind(sroot);
+    // puts("");
     }
-        midfind(sroot);
+    midfind(sroot);
 }
