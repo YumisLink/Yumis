@@ -81,6 +81,7 @@
         "typeindex": "cpp",
         "variant": "cpp"
     },
-    "python.pythonPath": "C:\\Users\\86189\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe"
+    "python.pythonPath": "C:\\Users\\63569\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "python.formatting.provider": "black"
 
 }

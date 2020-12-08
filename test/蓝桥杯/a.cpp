@@ -1,5 +1,8 @@
-#include<stdio.h>
-int main ()
+#include <cstdio>
+#include <map>
+using namespace std;
+
+int main()
 {
-    printf("Hello World");
+    printf("Hello Wo rld");
 }
