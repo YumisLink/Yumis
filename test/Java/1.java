@@ -1,54 +1,32 @@
-abstract class Employee {
-    protected double salary;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.Scanner;
 
-    public Employee(double salary) {
-        this.salary = salary;
-    }
 
-    abstract double computeSalary();
-}
+public class 1 {
 
-class Manager extends Employee {
-    public Manager(double salary) {
-        super(salary);
-    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String str;
+		str=sc.nextLine();
+		File f=new File(str);
+		if(!f.exists()){
+			System.out.println("文件不存在");
+			System.exit(1);
+		}
+		if(!f.isDirectory()){
+			System.out.println("不是目录");
+			System.exit(1);
+		}
+		File file[]=f.listFiles(new FilenameFilter(){
+			public boolean accept(File dir,String name){
+				return name.endsWith(".txt");
+			}
+		});
+		
+		for(int i=0;i<file.length;i++){
+			System.out.println(file[i]);
+		}
+	}
 
-    double computeSalary() {
-        return salary * 10;
-    }
-}
-
-class Salesman extends Employee {
-    private double up;
-
-    public Salesman(double salary) {
-        super(salary);
-    }
-
-    double computeSalary() {
-        return salary * 2;
-    }
-}
-
-class Worker extends Employee {
-    private double day;
-
-    public Worker(double salary) {
-        super(salary);
-    }
-
-    double computeSalary() {
-        return salary * 1;
-    }
-}
-
-public class Test3 {
-    public static void main(String[] args) {
-        Employee manager = new Manager(10000);
-        Employee sal = new Salesman(10000);
-        Employee wo = new Worker(1000);
-        System.out.println(manager.computeSalary());
-        System.out.println(sal.computeSalary());
-        System.out.println(wo.computeSalary());
-    }
 }

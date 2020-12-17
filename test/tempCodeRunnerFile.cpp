@@ -1,39 +1,79 @@
-#include <cstdio>
-#include <vector>
-#include <queue>
-#define MAXN 200100
-using namespace std;
-queue<int> Q;
-vector<int> V[MAXN];
-int n, m;
-int in[MAXN];
-void cin(int a, int b)
-{
-    V[a].push_back(b);
-    in[b]++;
-}
-int main()
-{
-    scanf("%d%d", &n, &m);
-    for (int i = 1; i <= m; i++)
-    {
-        int q, w;
-        scanf("%d%d", &q, &w);
-        cin(q, w);
-    }
-    for (int i = 1; i <= n; i++)
-        if (!in[i])
-            Q.push(i);
-    while (!Q.empty())
-    {
-        int k = Q.front();
-        printf("%d ", k);
-        Q.pop();
-        for (int i = 0; i < V[k].size(); i++)
-        {
-            in[V[k][i]]--;
-            if (!in[V[k][i]])
-                Q.push(V[k][i]);
-        }
-    }
-}
+    /// <summary>
+    /// 法力值
+    /// </summary>
+    public float Mana;
+
+    /// <summary>
+    /// 每秒法力回复
+    /// </summary>
+    public float ManaRec;
+
+    /// <summary>
+    /// 最大法力值
+    /// </summary>
+    public float ManaMax;
+
+    /// <summary>
+    /// 物理攻击力
+    /// </summary>
+    public float PhysicAtk;
+
+    /// <summary>
+    /// 魔法攻击力
+    /// </summary>
+    public float MagicAtk;
+
+    /// <summary>
+    /// 物理防御
+    /// </summary>
+    public float PhysicDef;
+
+    /// <summary>
+    /// 魔法防御
+    /// </summary>
+    public float MagicDef;
+
+    /// <summary>
+    /// 耐力
+    /// </summary>
+    public int PointEndurance;
+
+    /// <summary>
+    /// 精神力
+    /// </summary>
+    public int PointSpirit;
+
+    /// <summary>
+    /// 智力
+    /// </summary>
+    public int PointIntelligence;
+
+    /// <summary>
+    /// 力量
+    /// </summary>
+    public int PointStrength;
+
+    /// <summary>
+    /// 暴击
+    /// </summary>
+    public int Critical;
+
+    /// <summary>
+    /// 暴击系数
+    /// </summary>
+    public float CriticalCoe = 1.5f;
+
+    /// <summary>
+    /// 攻击速度
+    /// </summary>
+    public float SpeedAtk
+    
+    /// <summary>
+    /// 移动
+    /// </summary>
+    public float SpeedMov
+
+    /// <summary>
+    /// 技能急速
+    /// </summary>
+    public float SpeedSkl
