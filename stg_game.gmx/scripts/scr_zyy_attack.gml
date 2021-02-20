@@ -11,10 +11,12 @@ if (mouse_check_button(mb_left) && left_cd <= 0 && T == 0)
     a.alltime = 500
     a.damage = damage;
     left_cd = left_maxcd;
+    a.master = id;
 }
 if (mouse_check_button_pressed(mb_right) && right_cd <= 0 && T == 0)
 {
     var a = instance_create(x,y,obj_zyy_sword);
+    a.master = id;
     a.image_angle = point_direction(x,y,mouse_x,mouse_y);;
     right_cd = right_maxcd;
     T = 1;
@@ -76,7 +78,6 @@ if (T == 2 && e_time >= 0)
         }
     if (e_time == 0 || speed == 0) {T = 0;wudi = 0}
 }
-
 
 
 

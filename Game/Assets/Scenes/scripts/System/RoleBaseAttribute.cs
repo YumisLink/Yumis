@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal.VR;
-using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
-using UnityEngine.SocialPlatforms;
+﻿using UnityEngine;
 
 public class RoleBaseAttribute : MonoBehaviour
 {

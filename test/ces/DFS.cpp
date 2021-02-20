@@ -20,7 +20,9 @@ void d_pop()
     que[dhead] = dui[dhead] = 0;dhead--;int p = 1;
     while((p<<1) <= dhead)
     {
-        int k = p<<1;if (k+1 <= dhead && dui[k] > dui[k+1]) k ++;
+        int k = p<<1;if (k+1 <= dhead && dui[k] > du
+        
+        i[k+1]) k ++;
         if (dui[p] > dui[k]) {swap(dui[p],dui[k]);swap(que[p],que[k]);}
         else    break;
         p = k;

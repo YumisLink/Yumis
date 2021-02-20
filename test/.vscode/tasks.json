@@ -39,6 +39,25 @@
           "$gcc"
         ],
         "group": "build"
+      },
+      {
+        "type": "cppbuild",
+        "label": "C/C++: g++.exe build active file",
+        "command": "D:\\MinGW\\bin\\g++.exe",
+        "args": [
+          "-g",
+          "${file}",
+          "-o",
+          "${fileDirname}\\${fileBasenameNoExtension}.exe"
+        ],
+        "options": {
+          "cwd": "D:\\MinGW\\bin"
+        },
+        "problemMatcher": [
+          "$gcc"
+        ],
+        "group": "build",
+        "detail": "compiler: D:\\MinGW\\bin\\g++.exe"
       }
     ]
   }

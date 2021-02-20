@@ -37,6 +37,7 @@ name = "zyy"
 T = 0;
 qtime = 0;
 ispeed = 2;
+pow = 0;
 
 scr_initialization();
 

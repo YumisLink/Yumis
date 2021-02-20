@@ -28,7 +28,8 @@
             <string>life = 1;
 stand = 1;
 speed = 10;
-time = 0
+time = 0;
+//master = null;
 </string>
           </argument>
         </arguments>
