@@ -15,7 +15,6 @@ int main() {
       }
     }
   }
-  // for (int i = 0; i < 20; i++) printf("%d\n", V[i]);
   scanf("%d", &qwe);
   for (int www = 1; www <= qwe; www++) {
     scanf("%d", &n);
